@@ -3,15 +3,15 @@ package com.rahul.spark.sparkcontext
 import org.apache.spark.SparkContext
 
 object WordCountExample_ExportRDDToFile extends App {
-  val sparkContext: SparkContext = InitializeSpark.getSparkContext("employee", "local")
+  val sc = InitializeSpark.getSparkContext("employee", "local")
 
-  val wordsFileRDD = sparkContext.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/words_input.txt")
+  val wordsFileRDD = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/words_input.txt")
   /*
   Array[String] = Array(
   Bus,Car,bus,car,train,car,bus,car,train,bus,TRAIN,BUS,buS,caR,CAR,car,BUS,TRAIN)
    */
 
-  val a = wordsFileRDD.flatMap(w => w.split(","))
+  val a = wordsFileRDD.flatMap(w => w.split("\\W+"))
   /*
   Array[String] = Array(
   Bus,
@@ -33,7 +33,7 @@ object WordCountExample_ExportRDDToFile extends App {
   (TRAIN,1))
    */
 
-  val c = b.reduceByKey(_ + _)
+  val c = b.reduceByKey((x, y) => x + y)
   /*
   Array[(String, Int)] = Array(
   (TRAIN,2),
@@ -48,5 +48,35 @@ object WordCountExample_ExportRDDToFile extends App {
   (caR,1))
    */
 
-  c.saveAsTextFile("/home/rahul/Softwares/hadoop-2.8.0/data/output/")
+  val d = c.map(x => (x._2, x._1))
+  /*
+  Array[(Int, String)] = Array(
+  (2,TRAIN),
+  (1,Bus),
+  (2,train),
+  (1,Car),
+  (1,buS),
+  (4,car),
+  (3,bus),
+  (2,BUS),
+  (1,CAR),
+  (1,caR))
+   */
+
+  val e = d.sortByKey()
+  /*
+  Array[(Int, String)] = Array(
+  (1,Bus),
+  (1,Car),
+  (1,buS),
+  (1,CAR),
+  (1,caR),
+  (2,TRAIN),
+  (2,train),
+  (2,BUS),
+  (3,bus),
+  (4,car))
+   */
+
+  e.saveAsTextFile("/home/rahul/Softwares/hadoop-2.8.0/data/output/")
 }

@@ -11,7 +11,7 @@ object WordCountExample extends App {
   Bus,Car,bus,car,train,car,bus,car,train,bus,TRAIN,BUS,buS,caR,CAR,car,BUS,TRAIN)
    */
 
-  val a = wordsFileRDD.flatMap(w => w.split(","))
+  val a = wordsFileRDD.flatMap(w => w.split("\\W+"))
   /*
   Array[String] = Array(
   Bus,
