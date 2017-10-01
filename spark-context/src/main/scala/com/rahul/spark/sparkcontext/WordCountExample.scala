@@ -33,7 +33,7 @@ object WordCountExample extends App {
   (TRAIN,1))
    */
 
-  val c = b.reduceByKey(_ + _)
+  val c = b.reduceByKey((x, y) => x + y)
   /*
   Array[(String, Int)] = Array(
   (TRAIN,2),
