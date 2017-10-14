@@ -30,6 +30,5 @@ object DataFrameCSV extends App {
   // Register the DataFrame as a SQL temporary view
   dataFrame.createOrReplaceTempView("employees")
 
-  val sqlDF = spark.sql("SELECT * FROM employees")
-  sqlDF.show()
+  val sqlDF = spark.sql("SELECT * FROM employees").show()
 }
