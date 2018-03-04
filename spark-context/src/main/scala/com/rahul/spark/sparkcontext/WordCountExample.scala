@@ -1,11 +1,9 @@
 package com.rahul.spark.sparkcontext
 
-import org.apache.spark.SparkContext
-
 object WordCountExample extends App {
   val sc = InitializeSpark.getSparkContext("employee", "local")
 
-  val wordsFileRDD = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/words_input.txt")
+    val wordsFileRDD = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/words_input.txt")
   /*
   Array[String] = Array(
   Bus,Car,bus,car,train,car,bus,car,train,bus,TRAIN,BUS,buS,caR,CAR,car,BUS,TRAIN)

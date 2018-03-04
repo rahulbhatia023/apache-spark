@@ -8,7 +8,8 @@ object JoinExample extends App {
 
   val employees: RDD[String] = sparkContext.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/EMP1.csv")
   /*
-  Array[String] = Array(100,Steven,King,SKING,515.123.4567,17-JUN-87,AD_PRES,24000,,90,
+  Array[String] = Array(
+  100,Steven,King,SKING,515.123.4567,17-JUN-87,AD_PRES,24000,,90,
   101,Neena,Kochhar,NKOCHHAR,515.123.4568,21-SEP-89,AD_VP,17000,100,90,
   102,Lex,De Haan,LDEHAAN,515.123.4569,13-JAN-93,AD_VP,17000,100,90,
   103,Alexander,Hunold,AHUNOLD,590.423.4567,03-JAN-90,IT_PROG,9000,102,60,

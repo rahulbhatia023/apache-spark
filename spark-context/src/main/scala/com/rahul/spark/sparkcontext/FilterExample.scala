@@ -29,20 +29,4 @@ object FilterExample extends App {
   (station1,TMIN,5.3600006),
   (station3,TMIN,7.700001))
    */
-
-  val d = c.map(x => (x._1, x._3.toFloat))
-  /*
-  Array[(String, Float)] = Array(
-  (station1,5.3600006),
-  (station3,7.700001))
-   */
-
-  val e = d.reduceByKey((x, y) => min(x, y))
-  /*
-  Array[(String, Float)] = Array(
-  (station3,7.700001),
-  (station1,5.3600006))
-   */
-
-  def min(x: Float, y: Float) = if (x < y) x else y
 }
