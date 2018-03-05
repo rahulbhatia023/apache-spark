@@ -13,7 +13,7 @@ object AverageFriendsByAge extends App {
   4,quark,68,21)
    */
 
-  val b = a.map(line => (line.split(",")(2).toInt, line.split(",")(3).toInt))
+  val b = a.map(line => (line.split(",")(2), line.split(",")(3).toInt))
   /*
   Array[(String, String)] = Array(
   (33,385),
@@ -54,4 +54,10 @@ object AverageFriendsByAge extends App {
    */
 
   e.collect.sorted.foreach(println)
+  /*
+  (33,193)
+  (40,465)
+  (55,221)
+  (68,21)
+   */
 }
