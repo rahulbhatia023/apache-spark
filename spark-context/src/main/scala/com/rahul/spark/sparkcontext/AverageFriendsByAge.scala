@@ -59,5 +59,5 @@ object AverageFriendsByAge extends App {
   (40,465)
   (55,221)
   (68,21)
-   */
+  */
 }
