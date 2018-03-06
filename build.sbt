@@ -1,7 +1,7 @@
 lazy val commonSettings = Seq(
   organization := "com.rahul.spark",
   version := "1.0-SNAPSHOT",
-  scalaVersion := "2.11.11"
+  scalaVersion := "2.11.12"
 )
 
 val sparkContext = (project in file("spark-context")).settings(commonSettings)
