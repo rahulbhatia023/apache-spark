@@ -6,7 +6,7 @@ import scala.math.sqrt
 object MovieSimilarities extends App {
   val sc = InitializeSpark.getSparkContext("MovieSimilarities", "local")
 
-  def loadMovieNames(): Map[Int, String] = {
+  def loadMovieNames() = {
     var movieNames: Map[Int, String] = Map()
     val lines = Source.fromFile("/home/rahul/Softwares/hadoop-2.8.0/data/ml-20m/movies.csv").getLines()
     lines.foreach(line => {
