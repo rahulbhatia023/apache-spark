@@ -6,5 +6,6 @@ lazy val commonSettings = Seq(
 
 val sparkContext = (project in file("spark-context")).settings(commonSettings)
 val sparkSQL = (project in file("spark-sql")).settings(commonSettings)
+val sparkStream = (project in file("spark-stream")).settings(commonSettings)
 
-val apacheSpark = (project in file(".")).settings(commonSettings).aggregate(sparkContext, sparkSQL)
+val apacheSpark = (project in file(".")).settings(commonSettings).aggregate(sparkContext, sparkSQL, sparkStream)
