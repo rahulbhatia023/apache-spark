@@ -66,6 +66,6 @@ object PracticeExercises extends App {
 
   // Question - 4b
   val g = u.leftOuterJoin(t)
-  val h = g.filter(x => x._2._2 == None)
+  val h = g.filter(x => x._2._2.isEmpty)
   h.foreach(x => println(x._1))
 }
