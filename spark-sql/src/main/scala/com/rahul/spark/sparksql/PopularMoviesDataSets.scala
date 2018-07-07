@@ -13,7 +13,7 @@ object PopularMoviesDataSets extends App {
   val sparkSession = SparkSession.builder().appName("PopularMoviesDataSets").master("local").getOrCreate()
 
   // Read in each rating line and extract the movie ID; construct an RDD of Movie objects.
-  val lines = sparkSession.sparkContext.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/ml-20m/ratings.csv").map(x => Movie(x.split(",")(1)))
+  val lines = sparkSession.sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\ml-20m\\ratings.csv").map(x => Movie(x.split(",")(1)))
 
   // Convert to a DataSet
   import sparkSession.implicits._
@@ -32,7 +32,7 @@ object PopularMoviesDataSets extends App {
 
   def loadMovieNames(): Map[String, String] = {
     var movieNames: Map[String, String] = Map()
-    val lines = Source.fromFile("/home/rahul/Softwares/hadoop-2.8.0/data/ml-20m/movies.csv").getLines()
+    val lines = Source.fromFile("D:\\Softwares\\hadoop-2.8.4\\data\\ml-20m\\movies.csv").getLines()
     lines.foreach(line => {
       val fields = line.split(",")
       if (fields.nonEmpty) {
