@@ -3,7 +3,7 @@ package com.rahul.spark.sparkcontext
 object AverageFriendsByAge extends App {
   val sc = InitializeSpark.getSparkContext("AverageFriendsByAge", "local")
 
-  val a = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/friends.csv")
+  val a = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\friends.csv")
   /*
   Array[String] = Array(
   0,will,33,385,
@@ -13,9 +13,9 @@ object AverageFriendsByAge extends App {
   4,quark,68,21)
    */
 
-  val b = a.map(line => (line.split(",")(2), line.split(",")(3).toInt))
+  val b = a.map(line => (line.split(",")(2).toInt, line.split(",")(3).toInt))
   /*
-  Array[(String, String)] = Array(
+  Array[(String, Int)] = Array(
   (33,385),
   (33,2),
   (55,221),
@@ -40,7 +40,7 @@ object AverageFriendsByAge extends App {
   (55,(221,1)),
   (40,(465,1)),
   (68,(21,1)),
-  (33,(3852,2)))
+  (33,(385,2)))
    */
 
   /* Compute averages */
