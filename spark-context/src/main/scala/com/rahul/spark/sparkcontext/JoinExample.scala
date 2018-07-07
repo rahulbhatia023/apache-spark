@@ -6,7 +6,7 @@ import org.apache.spark.rdd.RDD
 object JoinExample extends App {
   val sparkContext: SparkContext = InitializeSpark.getSparkContext("employee", "local")
 
-  val employees: RDD[String] = sparkContext.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/EMP1.csv")
+  val employees: RDD[String] = sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\EMP1.csv")
   /*
   Array[String] = Array(
   100,Steven,King,SKING,515.123.4567,17-JUN-87,AD_PRES,24000,,90,
@@ -18,7 +18,7 @@ object JoinExample extends App {
   .......)
   */
 
-  val departments: RDD[String] = sparkContext.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/DEPT.csv")
+  val departments: RDD[String] = sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\DEPT.csv")
   /*
   Array[String] = Array(
   50,JAVA_DEPARTMENT)

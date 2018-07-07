@@ -6,7 +6,7 @@ import org.apache.spark.rdd.RDD
 object MapExample extends App {
   val sparkContext: SparkContext = InitializeSpark.getSparkContext("employee", "local")
 
-  val employeeRDD: RDD[String] = sparkContext.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/employee.txt")
+  val employeeRDD: RDD[String] = sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\employee.txt")
   /*
   Array[String] = Array(
   001,Rajiv,Reddy,21,programmer,003,

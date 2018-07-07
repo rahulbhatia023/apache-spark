@@ -3,7 +3,7 @@ package com.rahul.spark.sparkcontext
 object FilterExample extends App {
   val sc = InitializeSpark.getSparkContext("FilterExample", "local")
 
-  val a = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/weather.csv")
+  val a = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\weather.csv")
   /*
   Array[String] = Array(
   station1,18000101,TMAX,-75,,,E,,

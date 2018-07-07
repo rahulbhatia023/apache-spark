@@ -8,7 +8,7 @@ object MovieSimilarities extends App {
 
   def loadMovieNames() = {
     var movieNames: Map[Int, String] = Map()
-    val lines = Source.fromFile("/home/rahul/Softwares/hadoop-2.8.0/data/ml-20m/movies.csv").getLines()
+    val lines = Source.fromFile("D:\\Softwares\\hadoop-2.8.4\\data\\movies.csv").getLines()
     lines.foreach(line => {
       val fields = line.split(",")
       if (fields.length > 1) {
@@ -70,7 +70,7 @@ object MovieSimilarities extends App {
   }
 
   val nameDict = loadMovieNames()
-  val data = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/ml-20m/ratings.csv")
+  val data = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\ratings.csv")
 
   // Map ratings to key / value pairs: user ID => movie ID, rating
   val ratings = data.map(l => l.split(",")).map(l => (l(0).toInt, (l(1).toInt, l(2).toDouble)))

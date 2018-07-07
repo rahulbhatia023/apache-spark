@@ -1,7 +1,5 @@
 package com.rahul.spark.sparkcontext
 
-import org.apache.spark.SparkContext
-
 object WordCountExample_ExportRDDToFile extends App {
   val sc = InitializeSpark.getSparkContext("employee", "local")
 
@@ -78,5 +76,5 @@ object WordCountExample_ExportRDDToFile extends App {
   (4,car))
    */
 
-  e.saveAsTextFile("/home/rahul/Softwares/hadoop-2.8.0/data/output/")
+  e.saveAsTextFile("D:\\Softwares\\hadoop-2.8.4\\data\\output\\")
 }

@@ -6,7 +6,7 @@ import org.apache.spark.rdd.RDD
 object UnionExample extends App {
   val sparkContext: SparkContext = InitializeSpark.getSparkContext("employee", "local")
 
-  val employees1: RDD[String] = sparkContext.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/EMP1.csv")
+  val employees1: RDD[String] = sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\EMP1.csv")
   /*
   Array[String] = Array(
   100,Steven,King,SKING,515.123.4567,17-JUN-87,AD_PRES,24000,,90,
@@ -18,7 +18,7 @@ object UnionExample extends App {
   ...)
   */
 
-  val employees2: RDD[String] = sparkContext.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/EMP2.csv")
+  val employees2: RDD[String] = sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\EMP2.csv")
   /*
   Array[String] = Array(
   181,Jean,Fleaur,JFLEAUR,650.507.9877,23-FEB-98,SH_CLERK,3100,120,50,

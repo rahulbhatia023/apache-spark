@@ -3,9 +3,9 @@ package com.rahul.spark.sparkcontext
 object MostPopularSuperHero extends App {
   val sc = InitializeSpark.getSparkContext("MostPopularSuperHero", "local")
 
-  val names = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/Marvel-names.txt")
+  val names = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\Marvel-names.txt")
   val namesRDD = names.flatMap(line => parseNames(line))
-  val lines = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/Marvel-graph.txt")
+  val lines = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\Marvel-graph.txt")
   val pairing = lines.map(line => countCoOccurences(line))
   val totalFriendsByCharacter = pairing.reduceByKey((x, y) => x + y)
   val flipped = totalFriendsByCharacter.map(x => (x._2, x._1))

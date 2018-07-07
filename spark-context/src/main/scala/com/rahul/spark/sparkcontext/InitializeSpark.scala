@@ -1,7 +1,6 @@
 package com.rahul.spark.sparkcontext
 
-import org.apache.spark.SparkContext
-import org.apache.spark.SparkConf
+import org.apache.spark.{SparkConf, SparkContext}
 
 object InitializeSpark {
   def getSparkContext(appName: String, master: String): SparkContext =

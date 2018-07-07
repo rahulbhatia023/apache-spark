@@ -5,7 +5,7 @@ import scala.io.Source
 object PopularMovieNicer extends App {
   def loadMovieNames(): Map[Int, String] = {
     var movieNames: Map[Int, String] = Map()
-    val lines = Source.fromFile("/home/rahul/Softwares/hadoop-2.8.0/data/ml-20m/movies.csv").getLines()
+    val lines = Source.fromFile("D:\\Softwares\\hadoop-2.8.4\\data\\ml-20m\\movies.csv").getLines()
     lines.foreach(line => {
       val fields = line.split(",")
       if (fields.length > 0) {
@@ -18,7 +18,7 @@ object PopularMovieNicer extends App {
   val sc = InitializeSpark.getSparkContext("PopularMovie", "local")
 
   val movieNames = sc.broadcast(loadMovieNames())
-  val a = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/ml-20m/ratings.csv")
+  val a = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\ml-20m\\ratings.csv")
   val b = a.map(x => x.split(",")(1))
   val c = b.map(x => (x, 1))
   val d = c.reduceByKey((x, y) => x + y)
