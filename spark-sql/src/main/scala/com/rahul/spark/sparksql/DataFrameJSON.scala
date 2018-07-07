@@ -4,7 +4,7 @@ import org.apache.spark.sql.SparkSession
 
 object DataFrameJSON extends App {
   val spark = SparkSession.builder().master("local").getOrCreate()
-  val dataFrame = spark.read.json("/home/rahul/Softwares/hadoop-2.8.0/data/first_table.json")
+  val dataFrame = spark.read.json("D:\\Softwares\\hadoop-2.8.4\\data\\first_table.json")
 
   // Displays the content of the DataFrame
   dataFrame.show()
@@ -30,6 +30,5 @@ object DataFrameJSON extends App {
   // Register the DataFrame as a SQL temporary view
   dataFrame.createOrReplaceTempView("people")
 
-  val sqlDF = spark.sql("SELECT * FROM people")
-  sqlDF.show()
+  spark.sql("SELECT * FROM people").show()
 }
