@@ -5,8 +5,8 @@ import scala.io.Source
 object PracticeExercises extends App {
   val sc = InitializeSpark.getSparkContext("PracticeExercises", "local")
 
-  val users = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/users.csv")
-  val tweets = sc.textFile("/home/rahul/Softwares/hadoop-2.8.0/data/tweets.csv")
+  val users = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\users.csv")
+  val tweets = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\tweets.csv")
 
   // Question - 1a
   val nyUsers = users.map(line => line.split(",")).map(x => (x(0), x(2))).filter(x => x._2.equals("NY"))
@@ -15,20 +15,19 @@ object PracticeExercises extends App {
   // Question - 1b
   import scala.util.matching.Regex
 
-  val keyValPattern: Regex = "(.*),\"(.*)\",(.*)".r
-
   val a = tweets.map(x => getTweetParameters(x))
   val b = a.filter(x => x._2.contains("favorite"))
   b.foreach(println)
 
   def getTweetParameters(x: String): (String, String, String) = {
+    val keyValPattern: Regex = "(.*),\"(.*)\",(.*)".r
     var a: (String, String, String) = null
     keyValPattern.findAllIn(x).matchData foreach {
       patternMatch => {
         a = (patternMatch.group(1), patternMatch.group(2), patternMatch.group(3))
       }
     }
-    return a
+    a
   }
 
   // Question - 2b
@@ -50,7 +49,7 @@ object PracticeExercises extends App {
 
   def loadUserNames() = {
     var userNames: Map[String, String] = Map()
-    val lines = Source.fromFile("/home/rahul/Softwares/hadoop-2.8.0/data/users.csv").getLines()
+    val lines = Source.fromFile("D:\\Softwares\\hadoop-2.8.4\\data\\users.csv").getLines()
     lines.foreach(line => {
       val fields = line.split(",")
       if (fields.length > 1) {
