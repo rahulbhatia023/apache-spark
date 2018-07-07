@@ -4,7 +4,7 @@ import org.apache.spark.sql.SparkSession
 
 object DataFrameCSV extends App {
   val spark = SparkSession.builder().master("local").getOrCreate()
-  val dataFrame = spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load("/home/rahul/Softwares/hadoop-2.8.0/data/EMP.csv")
+  val dataFrame = spark.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load("D:\\Softwares\\hadoop-2.8.4\\data\\EMP.csv")
 
   // Displays the content of the DataFrame
   dataFrame.show()
@@ -30,5 +30,5 @@ object DataFrameCSV extends App {
   // Register the DataFrame as a SQL temporary view
   dataFrame.createOrReplaceTempView("employees")
 
-  val sqlDF = spark.sql("SELECT * FROM employees").show()
+  spark.sql("SELECT * FROM employees").show()
 }
