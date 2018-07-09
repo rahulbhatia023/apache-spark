@@ -10,7 +10,7 @@ object LogAnalyzerStreaming extends App {
   val sparkConf = new SparkConf().setAppName("LogAnalyzerStreaming").setMaster("local")
   val streamingContext = new StreamingContext(sparkConf, SLIDE_INTERVAL)
 
-  val logLinesDStream = streamingContext.socketTextStream("localhost", 9999)
+  val logLinesDStream = streamingContext.socketTextStream("localhost", 56565 )
   val accessLogsDStream = logLinesDStream.map(ApacheAccessLog.parseLogLine).cache()
   val windowDStream = accessLogsDStream.window(WINDOW_LENGTH, SLIDE_INTERVAL)
 
