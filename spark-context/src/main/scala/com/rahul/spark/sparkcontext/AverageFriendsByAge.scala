@@ -15,7 +15,7 @@ object AverageFriendsByAge extends App {
 
   val b = a.map(line => (line.split(",")(2).toInt, line.split(",")(3).toInt))
   /*
-  Array[(String, Int)] = Array(
+  Array[(Int, Int)] = Array(
   (33,385),
   (33,2),
   (55,221),
@@ -25,7 +25,7 @@ object AverageFriendsByAge extends App {
 
   val c = b.mapValues(x => (x, 1))
   /*
-  Array[(String, (String, Int))] = Array(
+  Array[(Int, (Int, Int))] = Array(
   (33,(385,1)),
   (33,(2,1)),
   (55,(221,1)),
@@ -40,7 +40,7 @@ object AverageFriendsByAge extends App {
   (55,(221,1)),
   (40,(465,1)),
   (68,(21,1)),
-  (33,(385,2)))
+  (33,(387,2)))
    */
 
   /* Compute averages */
