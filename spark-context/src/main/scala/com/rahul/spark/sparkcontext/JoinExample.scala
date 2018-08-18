@@ -1,12 +1,9 @@
 package com.rahul.spark.sparkcontext
 
-import org.apache.spark.SparkContext
-import org.apache.spark.rdd.RDD
-
 object JoinExample extends App {
-  val sparkContext: SparkContext = InitializeSpark.getSparkContext("employee", "local")
+  val sc = InitializeSpark.getSparkContext("employee", "local")
 
-  val employees: RDD[String] = sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\EMP1.csv")
+  val employees = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\EMP1.csv")
   /*
   Array[String] = Array(
   100,Steven,King,SKING,515.123.4567,17-JUN-87,AD_PRES,24000,,90,
@@ -18,13 +15,13 @@ object JoinExample extends App {
   .......)
   */
 
-  val departments: RDD[String] = sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\DEPT.csv")
+  val departments = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\DEPT.csv")
   /*
   Array[String] = Array(
   50,JAVA_DEPARTMENT)
    */
 
-  val employees_departmentID: RDD[(String, Array[String])] = employees.map(line => line.split(",")).map(line => (line(9), line))
+  val employees_departmentID = employees.map(line => line.split(",")).map(line => (line(9), line))
   /*
   Array[(String, Array[String])] = Array(
   (90,Array(100, Steven, King, SKING, 515.123.4567, 17-JUN-87, AD_PRES, 24000, "", 90)),
@@ -35,7 +32,7 @@ object JoinExample extends App {
   ...)
   */
 
-  val departments_departmentID: RDD[(String, Array[String])] = departments.map(line => line.split(",")).map(line => (line(0), line))
+  val departments_departmentID = departments.map(line => line.split(",")).map(line => (line(0), line))
   /*
   Array[(String, Array[String])] = Array(
   (50,Array(50, JAVA_DEPARTMENT)))

@@ -1,12 +1,9 @@
 package com.rahul.spark.sparkcontext
 
-import org.apache.spark.SparkContext
-import org.apache.spark.rdd.RDD
-
 object FlatMapExample extends App {
-  val sparkContext: SparkContext = InitializeSpark.getSparkContext("employee", "local")
+  val sc = InitializeSpark.getSparkContext("employee", "local")
 
-  val employeeRDD: RDD[String] = sparkContext.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\employee.txt")
+  val employeeRDD = sc.textFile("D:\\Softwares\\hadoop-2.8.4\\data\\employee.txt")
   /*
   Array[String] = Array(
   001,Rajiv,Reddy,21,programmer,003,
@@ -19,7 +16,7 @@ object FlatMapExample extends App {
   008,Bharathi,Nambiayar,24,manager,001)
    */
 
-  val employeeMapRDD: RDD[String] = employeeRDD.flatMap(line => line.split(","))
+  val employeeMapRDD = employeeRDD.flatMap(line => line.split(","))
   /*
   Array[String] = Array(
   001,
